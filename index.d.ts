@@ -1,8 +1,10 @@
 declare module 'react-native-numeric-input' {
-  import { ViewStyle } from 'react-native'
+  import React from "react";
+  import { ViewStyle, TextInput } from 'react-native'
   import { Color } from 'csstype'
 
   export interface INumericInputProps {
+    reference?: React.RefObject<TextInput>
     value?: number
     minValue?: number
     maxValue?: number
