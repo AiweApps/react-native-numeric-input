@@ -16,7 +16,7 @@ export default class NumericInput extends Component {
             lastValid: noInitSent ? props.value ? props.value : 0 : props.initValue,
             stringValue: (noInitSent ? props.value ? props.value : 0 : props.initValue).toString(),
         }
-        this.ref = this.props.reference
+        this.ref = null
     }
 
     // this.props refers to the new props
@@ -218,7 +218,10 @@ export default class NumericInput extends Component {
         if (this.props.type === 'up-down')
             return (
                 <View style={inputContainerStyle}>
-                    <TextInput returnKeyType='done' underlineColorAndroid='rgba(0,0,0,0)' keyboardType='numeric' {...this.props.extraTextInputProps} value={this.state.stringValue} editable={editable} onChangeText={this.onChange} style={inputStyle} ref={ref => this.ref = ref} onBlur={this.onBlur} onFocus={this.onFocus} />
+                    <TextInput returnKeyType='done' underlineColorAndroid='rgba(0,0,0,0)' keyboardType='numeric' {...this.props.extraTextInputProps} value={this.state.stringValue} editable={editable} onChangeText={this.onChange} style={inputStyle} ref={ref => {
+                        this.ref = ref;
+                        this.props.reference = ref;
+                    }} onBlur={this.onBlur} onFocus={this.onFocus} />
                     <View style={upDownStyle}>
                         <Button onPress={this.inc} style={{ flex: 1, width: '100%', alignItems: 'center' }}>
                             <Icon name='chevron-up' size={fontSize} style={[...iconStyle, maxReached ? this.props.reachMaxIncIconStyle : {}, minReached ? this.props.reachMinIncIconStyle : {}]} />
@@ -234,7 +237,10 @@ export default class NumericInput extends Component {
                     <Icon name='remove' size={fontSize} style={[...iconStyle, maxReached ? this.props.reachMaxDecIconStyle : {}, minReached ? this.props.reachMinDecIconStyle : {}]} />
                 </Button>
                 <View style={[inputWraperStyle]}>
-                    <TextInput returnKeyType='done' underlineColorAndroid='rgba(0,0,0,0)' keyboardType='numeric' {...this.props.extraTextInputProps} value={this.state.stringValue} editable={editable} onChangeText={this.onChange} style={inputStyle} ref={ref => this.ref = ref} onBlur={this.onBlur} onFocus={this.onFocus} />
+                    <TextInput returnKeyType='done' underlineColorAndroid='rgba(0,0,0,0)' keyboardType='numeric' {...this.props.extraTextInputProps} value={this.state.stringValue} editable={editable} onChangeText={this.onChange} style={inputStyle} ref={ref => {
+                        this.ref = ref;
+                        this.props.reference = ref;
+                    }} onBlur={this.onBlur} onFocus={this.onFocus} />
                 </View>
                 <Button onPress={this.inc} style={rightButtonStyle}>
                     <Icon name='add' size={fontSize} style={[...iconStyle, maxReached ? this.props.reachMaxIncIconStyle : {}, minReached ? this.props.reachMinIncIconStyle : {}]} />
