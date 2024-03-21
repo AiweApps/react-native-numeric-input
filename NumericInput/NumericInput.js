@@ -220,7 +220,7 @@ export default class NumericInput extends Component {
                 <View style={inputContainerStyle}>
                     <TextInput returnKeyType='done' underlineColorAndroid='rgba(0,0,0,0)' keyboardType='numeric' {...this.props.extraTextInputProps} value={this.state.stringValue} editable={editable} onChangeText={this.onChange} style={inputStyle} ref={ref => {
                         this.ref = ref;
-                        this.props.reference = ref;
+                        this.props.reference && this.props.reference(ref);
                     }} onBlur={this.onBlur} onFocus={this.onFocus} />
                     <View style={upDownStyle}>
                         <Button onPress={this.inc} style={{ flex: 1, width: '100%', alignItems: 'center' }}>
@@ -239,7 +239,7 @@ export default class NumericInput extends Component {
                 <View style={[inputWraperStyle]}>
                     <TextInput returnKeyType='done' underlineColorAndroid='rgba(0,0,0,0)' keyboardType='numeric' {...this.props.extraTextInputProps} value={this.state.stringValue} editable={editable} onChangeText={this.onChange} style={inputStyle} ref={ref => {
                         this.ref = ref;
-                        this.props.reference = ref;
+                        this.props.reference && this.props.reference(ref);
                     }} onBlur={this.onBlur} onFocus={this.onFocus} />
                 </View>
                 <Button onPress={this.inc} style={rightButtonStyle}>
